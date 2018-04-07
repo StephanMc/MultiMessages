@@ -43,6 +43,7 @@ import com.stephanmc.multimessages.tasks.SimpleImageCache;
 import com.stephanmc.multimessages.ui.AboutFragment;
 import com.stephanmc.multimessages.ui.ContactsFragment;
 import com.stephanmc.multimessages.ui.MessageFragment;
+import com.stephanmc.multimessages.util.Util;
 
 import java.util.HashSet;
 import java.util.List;

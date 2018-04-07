@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.futuremind.recyclerviewfastscroll.SectionTitleProvider;
 import com.stephanmc.multimessages.R;
-import com.stephanmc.multimessages.Util;
+import com.stephanmc.multimessages.util.Util;
 import com.stephanmc.multimessages.interfaces.ActivityInterface;
 import com.stephanmc.multimessages.model.PhoneContact;
 import com.stephanmc.multimessages.tasks.SimpleImageCache;

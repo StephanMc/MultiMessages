@@ -1,6 +1,6 @@
 package com.stephanmc.multimessages.tasks;
 
-import static com.stephanmc.multimessages.Util.SMS_LIMIT;
+import static com.stephanmc.multimessages.util.Util.SMS_LIMIT;
 import static com.stephanmc.multimessages.util.Constants.INTENT_EXTRA_CONTACT_NAME;
 import static com.stephanmc.multimessages.util.Constants.INTENT_EXTRA_SMS_DELIVERED;
 import static com.stephanmc.multimessages.util.Constants.INTENT_EXTRA_SMS_SENT;
@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.stephanmc.multimessages.R;
-import com.stephanmc.multimessages.Util;
+import com.stephanmc.multimessages.util.Util;
 import com.stephanmc.multimessages.interfaces.ActivityInterface;
 import com.stephanmc.multimessages.model.PhoneContact;
 import com.stephanmc.multimessages.ui.MultiMessageApplication;

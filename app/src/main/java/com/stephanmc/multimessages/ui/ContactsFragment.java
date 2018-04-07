@@ -36,7 +36,7 @@ import android.widget.Toast;
 
 import com.stephanmc.multimessages.BuildConfig;
 import com.stephanmc.multimessages.R;
-import com.stephanmc.multimessages.Util;
+import com.stephanmc.multimessages.util.Util;
 import com.stephanmc.multimessages.adapters.ContactsAdapter;
 import com.stephanmc.multimessages.interfaces.ActivityInterface;
 import com.stephanmc.multimessages.interfaces.OnContactsLoaded;
