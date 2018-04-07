@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/contacts_need_permission_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tvEnableContactsPermissionHelp"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/help_contacts_logo"
+            android:layout_marginBottom="27dp"
+            android:src="@drawable/image_contacts_general"/>
+
+        <TextView
+            android:id="@+id/tvEnableContactsPermissionHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_request_contact_permission"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:padding="@dimen/padding_list_row"
+            android:text="@string/label_contact_permission_needed"
+            android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/btn_request_contact_permission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="11dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/btn_enable_contact_permission"
+            android:theme="@style/PrimaryButton"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/recycler_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="always"
+            android:paddingBottom="@dimen/recyclerview_padding_bottom"
+            android:scrollbars="none"
+
+            />
+
+        <com.stephanmc.multimessages.lib.fastscroller.FastScroller
+            android:id="@+id/fastscroll"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/recyclerview_padding_bottom"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            app:fastscroll__bubbleColor="@color/colorPrimary"
+            app:fastscroll__bubbleTextAppearance="@style/StyledScrollerTextAppearance"
+            app:fastscroll__handleColor="@color/colorPrimaryDark"
+            />
+    </RelativeLayout>
+
+
+</RelativeLayout>
+

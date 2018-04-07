@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Multi Messages</string>
+    <string name="app_name_and_version" translatable="false">%1$s %2$s</string>
+
+    <string name="action_search">Search</string>
+    <string name="hint_search">Type name…</string>
+    <string name="txt_select_recipients_firstname_bold"><![CDATA[Select recipients <font color=\'aqua\'>(their firstnames are <b>bold</b>)</font>.]]></string>
+    <string name="txt_select_recipients"><![CDATA[Select recipients.]]></string>
+    <string name="no_selected_recipients">No recipients selected.</string>
+    <plurals name="user_selected_n_contacts">
+        <item quantity="one">%1$d recipient selected.</item>
+        <item quantity="other">%1$d recipients selected.</item>
+    </plurals>
+    <string name="firstname_inserted_label">Recipient firstname</string>
+    <string name="message_help_text">Click Preview to preview before sending.</string>
+    <string name="contacts_permissions_already_granted">The application already has the right permissions.</string>
+    <string name="popup_label_selected_contacts">Recipients</string>
+    <string name="label_add_contact_firstname">Firstname</string>
+    <string name="menu_select_all">Select all</string>
+    <string name="label_contact_permission_needed">To easily send messages to your friends and family, you should allow the app to access to your contacts</string>
+    <string name="btn_enable_contact_permission">Continue</string>
+    <string name="recipients_labels">"Recipients (%1$d) "</string>
+    <string name="help_multi_messages_logo" translatable="false">Multi Messages Logo</string>
+    <string name="help_contacts_logo" translatable="false">Contacts Logo</string>
+    <string name="app_description">Send personalized SMS to your friends and family.</string>
+    <string name="app_developed_by">Developed by Stéphane Kouadio (StephanMc)</string>
+    <string name="btn_buy_beer">🍺 Buy him a beer :)</string>
+    <string name="txt_help_improve_app">Write to the developer.</string>
+    <string name="btn_report_bug">Report a bug</string>
+    <string name="txt_help_contribute">Want to be a contribute ?</string>
+    <string name="btn_source_code">Source code</string>
+    <string name="txt_legal_notices">Legal notices and open source licences</string>
+    <string name="btn_licenses">Licenses</string>
+    <string name="btn_preview">Preview</string>
+    <string name="hint_message">Enter your message:</string>
+    <string name="press_twice_to_exit">Please click BACK again to exit</string>
+    <string name="thank_you_for_donate">Thank you very much !</string>
+    <string name="no_email_clients">There are no email clients installed.</string>
+    <string name="cannot_send_empty_sms">Can not send an empty SMS</string>
+    <string name="enter_valid_phone_number">Please Enter a Valid Phone Number</string>
+    <string name="send_sms_to_n_contacts">Send SMS to %1$d contacts ?</string>
+    <string name="btn_send">SEND</string>
+    <string name="txt_cancel_label">Cancel</string>
+    <string name="txt_ok_label">OK</string>
+    <string name="toast_contacts_permission_refused_again">Until you grant us, we cannot display your contacts names.</string>
+    <string name="send_mail_using">Send mail using…</string>
+    <string name="sms_access_needed">You need to allow access to Send SMS</string>
+    <string name="toast_sending_messages">Sending messages …</string>
+    <string name="txt_help_popup_click_contact_names">Click contact names to see what they will receive.</string>
+    <string name="txt_message_limit">Messages limit</string>
+    <string name="txt_alert_cannot_send_more_than_limit">Due to an Android limitation, you can not send SMS to more than %1$d contacts at once</string>
+    <string name="receiver_message_sent_success">Sent</string>
+    <string name="receiver_unknown_error">Unknown Error</string>
+    <string name="receiver_generic_failure_error">Generic Failure Error</string>
+    <string name="receiver_no_service_available_error">Error : No Service Available</string>
+    <string name="receiver_null_pdu_error">Error : Null PDU</string>
+    <string name="receiver_radio_is_off_error">Error : Radio is off</string>
+    <string name="delivery_message_not_delivered">Message Not Delivered</string>
+    <string name="delivery_message_delivered_successfully">Received</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="padding_list_row">16dp</dimen>
+
+    <dimen name="activity_margin">7dp</dimen>
+    <dimen name="thumbnail">50dp</dimen>
+    <dimen name="row_padding">15dp</dimen>
+    <dimen name="contact_name">18sp</dimen>
+    <dimen name="contact_number">12sp</dimen>
+    <dimen name="editTextRadius">5dp</dimen>
+    <dimen name="recyclerview_padding_bottom">93dp</dimen>
+</resources>
