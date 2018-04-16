@@ -227,7 +227,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
             return;
         }
 
-        int spaceIndex = Util.indexOfNameSeparator(textString);
+        int spaceIndex = Util.indexOfFirstnameSeparator(textString);
         int indexStart = 0;
         int indexEnd = spaceIndex > -1 ? spaceIndex : textString.length();
 

@@ -104,7 +104,7 @@ public class Util {
      * This acts like String.indexOf(), but looks for the firstname separator regex (space or ".") in the String input.
      * If not found, we return -1.
      */
-    public static int indexOfNameSeparator(String input) {
+    public static int indexOfFirstnameSeparator(String input) {
         Matcher matcher = sPattern.matcher(input);
         if (matcher.find()) {
             return matcher.start();
@@ -121,7 +121,7 @@ public class Util {
             return contactName;
         }
 
-        int spaceIndex = Util.indexOfNameSeparator(contactName);
+        int spaceIndex = Util.indexOfFirstnameSeparator(contactName);
         int indexStart = 0;
         int indexEnd = spaceIndex > -1 ? spaceIndex : contactName.length();
 
