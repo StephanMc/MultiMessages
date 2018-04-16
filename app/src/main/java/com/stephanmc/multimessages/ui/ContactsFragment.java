@@ -1,6 +1,6 @@
 package com.stephanmc.multimessages.ui;
 
-import static com.stephanmc.multimessages.MainActivity.PERMISSIONS_REQUEST_READ_CONTACTS;
+import static com.stephanmc.multimessages.MainActivity.PERMISSIONS_REQUEST_READ_CONTACTS_AND_PHONE_STATE;
 
 import android.Manifest;
 import android.app.SearchManager;
@@ -36,7 +36,6 @@ import android.widget.Toast;
 
 import com.stephanmc.multimessages.BuildConfig;
 import com.stephanmc.multimessages.R;
-import com.stephanmc.multimessages.util.Util;
 import com.stephanmc.multimessages.adapters.ContactsAdapter;
 import com.stephanmc.multimessages.interfaces.ActivityInterface;
 import com.stephanmc.multimessages.interfaces.OnContactsLoaded;
@@ -44,6 +43,7 @@ import com.stephanmc.multimessages.lib.fastscroller.FastScroller;
 import com.stephanmc.multimessages.model.PhoneContact;
 import com.stephanmc.multimessages.tasks.AsyncContactLoader;
 import com.stephanmc.multimessages.tasks.SimpleImageCache;
+import com.stephanmc.multimessages.util.Util;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,7 +80,7 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
     private RecyclerView mRecyclerView;
     private View mRecyclerViewContainer;
     private View mContactsNeedPermissionView;
-    private View mBtnRequestPermission;
+    private View mContinueBtn;
     private ContactsAdapter mAdapter;
     // Search action listener
     private final SearchView.OnQueryTextListener mOnQueryTextListener = new SearchView.OnQueryTextListener() {
@@ -185,23 +185,28 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
         return (int) typedValue.getDimension(metrics);
     }
 
-    private void installBtnListener() {
+    private void setupContinueBtnListener() {
 
-        mBtnRequestPermission.setOnClickListener(new View.OnClickListener() {
+        mContinueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mActivity == null) {
                     return;
                 }
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && mActivity.checkSelfPermission(
-                        Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-                    mActivity.requestPermissions(new String[]{Manifest.permission.READ_CONTACTS},
-                            PERMISSIONS_REQUEST_READ_CONTACTS);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    boolean hasNotContactsPermission = mActivity.checkSelfPermission(Manifest.permission.READ_CONTACTS)
+                            != PackageManager.PERMISSION_GRANTED;
 
-                } else {
-                    Toast.makeText(getContext(), R.string.contacts_permissions_already_granted, Toast.LENGTH_SHORT)
-                            .show();
+
+                    boolean hasNotReadPhoneStatePermission = mActivity.checkSelfPermission(
+                            Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED;
+
+                    if (hasNotContactsPermission || hasNotReadPhoneStatePermission) {
+                        mActivity.requestPermissions(
+                                new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.READ_PHONE_STATE},
+                                PERMISSIONS_REQUEST_READ_CONTACTS_AND_PHONE_STATE);
+                    }
                 }
             }
         });
@@ -212,11 +217,19 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
             return;
         }
         // Check the SDK version and whether the permission is already granted or not.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && mActivity.checkSelfPermission(
-                Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
-            displayNeedPermissionView();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
-            return;
+            boolean hasNotContactsPermission = mActivity.checkSelfPermission(Manifest.permission.READ_CONTACTS)
+                    != PackageManager.PERMISSION_GRANTED;
+
+            boolean hasNotPhoneStatePermission = mActivity.checkSelfPermission(Manifest.permission.READ_PHONE_STATE)
+                    != PackageManager.PERMISSION_GRANTED;
+
+            if (hasNotContactsPermission || hasNotPhoneStatePermission) {
+                displayNeedPermissionView();
+
+                return;
+            }
         }
 
         displayContactView();
@@ -260,8 +273,9 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         switch (requestCode) {
-            case PERMISSIONS_REQUEST_READ_CONTACTS: {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            case PERMISSIONS_REQUEST_READ_CONTACTS_AND_PHONE_STATE: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED
+                        && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                     // Permission is granted
                     showContactsInRecyclerView();
                 } else {
@@ -302,7 +316,7 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
         mRecyclerView = contactsFragmentView.findViewById(R.id.recycler_view);
         mRecyclerViewContainer = contactsFragmentView.findViewById(R.id.recycler_view_container);
         mContactsNeedPermissionView = contactsFragmentView.findViewById(R.id.contacts_need_permission_view);
-        mBtnRequestPermission = contactsFragmentView.findViewById(R.id.btn_request_contact_permission);
+        mContinueBtn = contactsFragmentView.findViewById(R.id.btn_request_contact_permission);
 
         mFastScroller = contactsFragmentView.findViewById(R.id.fastscroll);
 
@@ -323,7 +337,7 @@ public class ContactsFragment extends BaseFragment implements LoaderManager.Load
             throw new ClassCastException(getActivity() + " must implement ActivityInterface");
         }
 
-        installBtnListener();
+        setupContinueBtnListener();
         showContactsInRecyclerView();
     }
 

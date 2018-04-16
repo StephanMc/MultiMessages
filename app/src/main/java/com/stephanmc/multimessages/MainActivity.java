@@ -54,7 +54,7 @@ import java.util.Set;
  */
 public class MainActivity extends AppCompatActivity implements ActivityInterface {
 
-    public static final int PERMISSIONS_REQUEST_READ_CONTACTS = 100;
+    public static final int PERMISSIONS_REQUEST_READ_CONTACTS_AND_PHONE_STATE = 100;
     public static final int PERMISSIONS_REQUEST_SEND_SMS = 200;
 
     private static final String TAG = MainActivity.class.getSimpleName();
